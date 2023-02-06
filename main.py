@@ -14,7 +14,7 @@ row_list = excel.loc[4, :].values.flatten().tolist()
 
 excel.columns = row_list
 excel.drop(excel.columns[[0, 1, 4]], axis=1, inplace=True)
-excel.drop(excel.index[[0, 1, 2, 3, 4]], axis=0, inplace=True)
+excel.drop(excel.index[[0, 1, 2, 3, 4, 36]], axis=0, inplace=True)
 excel.reset_index(drop=True, inplace=True)
 
 print(excel.to_string())
@@ -31,12 +31,12 @@ pgcursor = pgconn.cursor()
 pgconn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 
 # drop table
-pgcursor.execute('DROP TABLE IF EXISTS crypto_table')
+pgcursor.execute('DROP TABLE IF EXISTS stores')
 
 # create table
 pgcursor.execute("""
 
-CREATE TABLE IF NOT EXISTS crypto_table
+CREATE TABLE IF NOT EXISTS stores
 (
     [Store No]               VAR_CHAR
   , Store             VARCHAR(50) NOT NULL
